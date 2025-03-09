@@ -1,0 +1,25 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Philosopher {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  birthYear    Int
+  deathYear    Int?
+  era          String
+  mainIdeas    String[]
+  bio          String
+  quote        String
+  imageSrc     String
+  nationality  String
+  notableWorks String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
